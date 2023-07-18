@@ -1,6 +1,5 @@
 # -- coding: utf-8 --**
 import nmap, os, json, time
-from Wapp import get_service_app
 from Wappalyzer import Wappalyzer, WebPage
 
 nma2 = nmap.PortScannerAsync()
