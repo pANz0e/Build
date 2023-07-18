@@ -91,13 +91,28 @@ def get_portinfo(ip, port, port_info):
 def get_deviceinfo(scan_result):
     info_list = []
     pfsense_str = ["freebsd:freebsd:11.2", "freebsd:freebsd:7"]
-    device_list = ["hikvision", "Hikvision", "HIKVISION", "Dahua", "dahua", "cisco", "Cisco", "Synology", "synology",
-                   "pfSense"]
+    hikvision_list = ["hikvision", "Hikvision", "HIKVISION"]
+    dahua_list = [ "Dahua", "dahua"]
+    cisco_list = [ "cisco", "Cisco"]
+    synology_list = [ "Synology", "synology"]
+    pfSense_list = ["pfSense"]
     device_type = {"hikvision": "Webcam", "Hikvision": "Webcam", "HIKVISION": "Webcam", "Dahua": "Webcam",
                    "dahua": "Webcam", "cisco": "switch", "Cisco": "switch", "Synology": "Nas", "synology": "Nas",
                    "pfSense": "Nas"}
     scan_str = str(scan_result)
-    for i in device_list:
+    for i in hikvision_list:
+        if i in scan_str:
+            info_list.append(device_type[i] + "/" + i)
+    for i in dahua_list:
+        if i in scan_str:
+            info_list.append(device_type[i] + "/" + i)
+    for i in cisco_list:
+        if i in scan_str:
+            info_list.append(device_type[i] + "/" + i)
+    for i in synology_list:
+        if i in scan_str:
+            info_list.append(device_type[i] + "/" + i)
+    for i in pfSense_list:
         if i in scan_str:
             info_list.append(device_type[i] + "/" + i)
     for i in pfsense_str:
